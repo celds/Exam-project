@@ -1,4 +1,17 @@
-
+:root {
 /*colors*/
---primary-color: #007bff;
---secondary-color: #6c757d;
+--primary-color: #000000;
+--secondary-color: #CEAF88;
+--accent-color: #132A87;
+
+--background-color: #FFFFFF;
+--text-color: #000000;
+--secondary-text-color: #FFFFFF;
+
+
+/*fonts*/
+--font-family: Arial, sans-serif;
+--secondary-font-family: 'Times New Roman', serif;
+
+
+}
