@@ -6,7 +6,7 @@ export default function Register() {
 
     <h1>Create an account</h1>
 
-    <form class="auth-form">
+    <form class="auth-form" id="register-form">
     <div>
     <label for="name">Name</label>
     <input class="input-field"
@@ -39,7 +39,7 @@ export default function Register() {
 
     <p> By creating an account you agree to terms and conditions and User privacy notice</p>
 
-    <button class="btn type="submit"> Create account</button>
+    <button class="btn" type="submit"> Create account</button>
 
     </form>
     <p> Already have an account? <a href="/login">Login</a>
@@ -49,4 +49,47 @@ export default function Register() {
     </main>
 
     `;
+}
+
+export function initRegister() {
+  const form = document.querySelector("#register-form ");
+
+  if (!form)return;
+
+  form.addEventListener("submit", async (event) =>{
+    event.preventDefault();
+
+    const name = document.querySelector("#name").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value;
+
+    try{
+      const response = await fetch("https://v2.api.noroff.dev/auth/register",{
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password
+      })
+   });
+
+   const data = await response.json();
+
+   if (!response.ok) {
+    alert(data.errors?.[0]?.message || "registration failed");
+    return;
+   }
+
+   console.log("user was created:", data);
+
+   window.location.href = "/login";
+
+  }catch (error) {
+    console.error(error);
+    alert("something went wrong");
+  }
+});
 }

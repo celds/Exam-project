@@ -14,7 +14,7 @@ export default function Login() {
      type="email"
      id="email"
      name="email"
-     placeholder="Email address"
+     placeholder="Email"
         required/>
      </div>
 
