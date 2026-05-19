@@ -1,17 +1,36 @@
 :root {
-/*colors*/
---primary-color: #000000;
---secondary-color: #CEAF88;
---accent-color: #132A87;
+  /*colors*/
+  --primary-color: #000000;
+  --secondary-color: #FFE8CF;
+  --third-color: #ffffff;
+  --accent-color: #AB0000;
 
---background-color: #FFFFFF;
---text-color: #000000;
---secondary-text-color: #FFFFFF;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --secondary-text-color: #ffffff;
+  --third-text-color: #8B8B8B;
+  --fourth-text-color: #AB0000;
 
+  /*fonts family*/
+  --font-family: Arial, sans-serif;
 
-/*fonts*/
---font-family: Arial, sans-serif;
---secondary-font-family: 'Times New Roman', serif;
+  /*font sizes*/
+  --heading-1: 34px;
+  --heading-2: 26px;
+  --heading-3: 24px;
+  --paragraph: 18px;
+  --small: 16px;
 
+  /*font spacing*/
+  --letter-spacing: 0.5px;
+  --line-height: 1.5;
+  --line-height2: 2;
 
+  /*padding*/
+  --padding-8px: 8px;
+  --padding-16px: 16px;
+  --padding-24px: 24px;
+  --padding-32px: 32px;
+  --padding-40px: 40px;
+  --padding-46px: 48px;
 }

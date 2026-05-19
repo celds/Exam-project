@@ -1,0 +1,89 @@
+@import url("./variables.css");
+@import url("./global.css");
+
+
+
+/* About Us */
+.aboutus-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--padding-40px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.aboutus-container h1{
+    text-align: center;
+    font-size: var(--heading-1);
+    color: var(--text-color);
+}
+
+.aboutus-container p {
+    text-align: left;
+    font-size: var(--paragraph);
+    line-height: Var(--line-height2);
+    letter-spacing: var(--letter-spacing);
+    color: var(--text-color);
+}
+
+
+
+
+
+/* Login */
+
+.forgot-password {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+ 
+
+/* Register */
+
+.register-text {
+    font-size: 12px;
+    text-align: center;
+    color: var(--text-color);
+    margin-top: -6px;
+}
+
+.login-text {
+    margin-top: 24px;
+    color: var(--text-color);
+    font-size: var(--small);
+}
+
+.login-text a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+ 
+
+
+/* Success */
+
+.success-container{
+    gap: 24px;
+}
+
+.payment-things {
+    background-color: var(--third-color);
+    width: 100%;
+    padding: var(--padding-24px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-radius: 10px;
+}
+
+.payment-things p {
+    font-size: var(--paragraph);
+    color: var(--text-color);
+    margin: 0;
+}
