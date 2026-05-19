@@ -54,42 +54,41 @@ export default function Register() {
 export function initRegister() {
   const form = document.querySelector("#register-form ");
 
-  if (!form)return;
+  if (!form) return;
 
-  form.addEventListener("submit", async (event) =>{
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const name = document.querySelector("#name").value.trim();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value;
 
-    try{
-      const response = await fetch("https://v2.api.noroff.dev/auth/register",{
+    try {
+      const response = await fetch("https://v2.api.noroff.dev/auth/register", {
         method: "POST",
         headers: {
-          "Content-type": "application/json"
+          "Content-type": "application/json",
         },
         body: JSON.stringify({
           name,
           email,
-          password
-      })
-   });
+          password,
+        }),
+      });
 
-   const data = await response.json();
+      const data = await response.json();
 
-   if (!response.ok) {
-    alert(data.errors?.[0]?.message || "registration failed");
-    return;
-   }
+      if (!response.ok) {
+        alert(data.errors?.[0]?.message || "registration failed");
+        return;
+      }
 
-   console.log("user was created:", data);
+      console.log("user was created:", data);
 
-   window.location.href = "/login";
-
-  }catch (error) {
-    console.error(error);
-    alert("something went wrong");
-  }
-});
+      window.location.href = "/login";
+    } catch (error) {
+      console.error(error);
+      alert("something went wrong");
+    }
+  });
 }
