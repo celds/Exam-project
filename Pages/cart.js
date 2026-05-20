@@ -76,3 +76,16 @@ export default function Cart() {
     </main>
     `;
 }
+
+export function initCart() {
+
+  const clearCartBtn = document.querySelector(".clear-cart-btn");
+
+  clearCartBtn.addEventListener("click", () => {
+
+    localStorage.removeItem("cart");
+
+    location.reload();
+  });
+
+}
