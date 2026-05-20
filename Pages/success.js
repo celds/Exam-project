@@ -1,3 +1,4 @@
+
 export default function Success() {
   return /*html*/ `
 
@@ -17,7 +18,7 @@ export default function Success() {
 
     </section>
 
-    <a href="/" data-link class="btn">Back to homepage</a>
+    <a href="/" data-link class="btn">Done</a>
 
     </section>
     </main>

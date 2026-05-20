@@ -9,7 +9,8 @@ export default function Cart() {
     <h1>Checkout</h1>
 
     <article class="cart-items">
-    <img src="no" alt="no image"/>
+
+    <img src="" alt="no image"/>
 
     <section class="cart-item-info">
 
@@ -35,7 +36,7 @@ export default function Cart() {
     </section>
     </article>
 
-    <button type="button" class="clear-cart-button">Clear cart</button>
+    <button type="button" class="clear-cart-btn">Clear cart</button>
     </section>
 
     <aside class="summary section">
@@ -68,7 +69,7 @@ export default function Cart() {
     <span>4500 NOK</span>
     </p>
 
-    <button type="button" class="checkout-button">Checkout</button>
+    <button type="button" class="checkout-btn">Checkout</button>
     </section>
     </aside>
     </section>

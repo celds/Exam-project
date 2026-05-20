@@ -64,14 +64,19 @@ export async function initProducts() {
 
     products.forEach((product) => {
 
+      /*rememebebebberrrrR*/
+      
       productsTrack.innerHTML += `
+
         <article class="product-card">
 
+          <a href="/product-detail?id=${product.id}">
           <img
             src="${product.image.url}"
             alt="${product.title}"
             class="product-image"
           >
+          </a>
 
           <h2 class="product-title">
             ${product.title}
@@ -89,15 +94,39 @@ export async function initProducts() {
 
           </div>
 
-          <button class="add-to-cart-btn">
+          <button class="add-to-cart-btn" data-id="${product.id}">
             Add to cart
           </button>
 
         </article>
       `;
     });
-  }
 
+       const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click",() => {
+
+      const productId = button.dataset.id;
+
+      const selectedProduct = products.find((product) => {
+        return product.id === productId;
+      });
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push(selectedProduct);
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      console.log("added to cart");
+      alert("added to cart");
+
+    });
+  });
+}
+
+/*RMEMEBERRR */
   nextBtn.addEventListener("click", () => {
     productsTrack.scrollLeft += 900;
   });
