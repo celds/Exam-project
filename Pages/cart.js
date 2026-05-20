@@ -1,6 +1,6 @@
 export default function Cart() {
   return /*html*/ `
-    <main id=cart-page">
+    <main id="cart-page">
 
     <section class="cart-container">
 

@@ -1,5 +1,5 @@
 import home from "../pages/home.js";
-import products from "../Pages/products.js";
+import products, {initProducts} from "../Pages/products.js";
 import productDetail from "../pages/product-detail.js";
 import checkout from "../pages/checkout.js";
 import cart from "../pages/cart.js";
@@ -10,11 +10,11 @@ import aboutUs from "../pages/about-us.js";
 
 const routes = [
   { path: "/", view: home },
-  { path: "/products", view: products },
+  { path: "/products", view: products, init:initProducts },
   { path: "/productDetail", view: productDetail },
   { path: "/checkout", view: checkout },
   { path: "/cart", view: cart },
-  { path: "/login", view: login, init:initLogin},
+  { path: "/login", view: login, init:initLogin },
   { path: "/register", view: register, init:initRegister },
   { path: "/success", view: success },
   { path: "/about-us", view: aboutUs },

@@ -1,89 +1,197 @@
 @import url("./variables.css");
 @import url("./global.css");
 
-
-
 /* About Us */
 .aboutus-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--padding-40px);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--padding-40px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.aboutus-container h1{
-    text-align: center;
-    font-size: var(--heading-1);
-    color: var(--text-color);
+.aboutus-container h1 {
+  text-align: center;
+  font-size: var(--heading-1);
+  color: var(--text-color);
 }
 
 .aboutus-container p {
-    text-align: left;
-    font-size: var(--paragraph);
-    line-height: Var(--line-height2);
-    letter-spacing: var(--letter-spacing);
-    color: var(--text-color);
+  text-align: left;
+  font-size: var(--paragraph);
+  line-height: Var(--line-height2);
+  letter-spacing: var(--letter-spacing);
+  color: var(--text-color);
 }
-
-
-
-
 
 /* Login */
 
 .forgot-password {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 16px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 16px;
 }
-
-
- 
 
 /* Register */
 
 .register-text {
-    font-size: 12px;
-    text-align: center;
-    color: var(--text-color);
-    margin-top: -6px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--text-color);
+  margin-top: -6px;
 }
 
 .login-text {
-    margin-top: 24px;
-    color: var(--text-color);
-    font-size: var(--small);
+  margin-top: 24px;
+  color: var(--text-color);
+  font-size: var(--small);
 }
 
 .login-text a {
-    color: var(--text-color);
-    text-decoration: none;
+  color: var(--text-color);
+  text-decoration: none;
 }
-
- 
-
 
 /* Success */
 
-.success-container{
-    gap: 24px;
+.success-container {
+  gap: 24px;
 }
 
 .payment-things {
-    background-color: var(--third-color);
-    width: 100%;
-    padding: var(--padding-24px);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    border-radius: 10px;
+  background-color: var(--third-color);
+  width: 100%;
+  padding: var(--padding-24px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-radius: 10px;
 }
 
 .payment-things p {
-    font-size: var(--paragraph);
-    color: var(--text-color);
-    margin: 0;
+  font-size: var(--paragraph);
+  color: var(--text-color);
+  margin: 0;
 }
+
+/* profile card*/
+
+.profile-wrapper{
+  position: relative;
+}
+
+.profile-card {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: var(--padding-16px);
+  border-radius: 8px;
+  width: 200px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* products page */
+
+.bestselling-section {
+  padding: var(--padding-40px);
+  background-color: var(--secondary-color);
+}
+
+.bestselling-title {
+  font-size: var(--heading-1);
+  color: var(--text-color);
+  margin-bottom: var(--padding-32px);
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.products-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.products-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  
+}
+
+.products-track::-webkit-scrollbar {
+  display: none
+}
+
+
+.product-card {
+  min-width: 350px;
+  max-width: 350px;
+  background-color: var(--background-color);
+  padding: var(--padding-16px);
+  flex-shrink: 0;
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-title {
+  font-size: var(--heading-3);
+  color: var(--text-color);
+  margin-top: var(--padding-16px);
+  margin-bottom: var(--padding-8px);
+
+}
+
+.product-prices {
+  display: flex;
+  gap: 10px;
+  margin-bottom: var(--padding-16px);
+}
+
+.discount-price {
+  color: var(--fourth-text-color);
+  font-size: var(--paragraph);
+}
+
+.original-price {
+  color: var(--third-text-color);
+  text-decoration: line-through;
+  font-size: var(--small);
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  height: 42px;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.carousel-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background-color:var(--primary-color);
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+

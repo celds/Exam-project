@@ -1,5 +1,5 @@
 import routes from "./routes.js";
-import renderHeader from "../components/header.js";
+import renderHeader, {initHeader} from "../components/header.js";
 import renderFooter from "../components/footer.js";
 
 const NotFound = () => `
@@ -21,7 +21,8 @@ export function initRouter() {
     const page = route ? route.view : NotFound;
     
     document.getElementById("app").innerHTML = page();
-    document.getElementById("header").innerHTML = renderHeader();
+    document.getElementById("header").innerHTML = renderHeader(); 
+    initHeader();
     document.getElementById("footer").innerHTML = renderFooter();
 
     if (route && route.init) {

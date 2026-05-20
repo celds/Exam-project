@@ -1,15 +1,15 @@
 :root {
   /*colors*/
   --primary-color: #000000;
-  --secondary-color: #FFE8CF;
+  --secondary-color: #ffe8cf;
   --third-color: #ffffff;
-  --accent-color: #AB0000;
+  --accent-color: #ab0000;
 
   --background-color: #ffffff;
   --text-color: #000000;
   --secondary-text-color: #ffffff;
-  --third-text-color: #8B8B8B;
-  --fourth-text-color: #AB0000;
+  --third-text-color: #8b8b8b;
+  --fourth-text-color: #ab0000;
 
   /*fonts family*/
   --font-family: Arial, sans-serif;
