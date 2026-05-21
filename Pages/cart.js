@@ -10,9 +10,10 @@ export default function Cart() {
   let totalDiscounted = 0;
 
   cart.forEach((product) => {
-    totalPrice += product.price;
-    totalDiscounted += product.discountedPrice;
+    totalPrice += product.price * (product.quantity || 1);
+    totalDiscounted += product.discountedPrice * (product.quantity || 1);
   });
+
   const discount = totalPrice - totalDiscounted;
 
   return /*html*/ `
@@ -27,7 +28,8 @@ export default function Cart() {
     ${
       cart.length === 0
       ?`<p>Cart is empty</p>`
-      : cart.map((product) => {
+      : cart.map((product, index) => {
+
         return`
 
     <article class="cart-items">
@@ -50,9 +52,11 @@ export default function Cart() {
 
     <div class="quantity">
 
-    <button type="button">-</button>
-    <span>1</span>
-    <button type="button">+</button>
+    <button type="button" class="minus-btn" data-index="${index}">-</button>
+
+    <span>${product.quantity || 1}</span>
+
+    <button type="button" class="plus-btn" data-index="${index}">+</button>
 
     </div>
     </section>
@@ -70,18 +74,18 @@ export default function Cart() {
     <section class="summary-info">
 
     <p>
-    <span>Items (${itemsCount})</span>
-    <span>${totalPrice}</span>
+    <span>Items: (${itemsCount})</span>
+    <span>${totalPrice.toFixed(2)} NOK</span>
     </p>
 
     <p>
-    <span>Shipping</span>
+    <span>Shipping:</span>
     <span>Free</span>
     </p>
 
     <p>
     <span>Discounts:</span>
-    <span>-${discount}</span>
+    <span>-${discount.toFixed(2)} NOK</span>
     </p>
 
     </section>
@@ -90,8 +94,8 @@ export default function Cart() {
     <section class="summary-total">
 
     <p>
-    <span>Total</span>
-    <span>${totalDiscounted}</span>
+    <span>Total:</span>
+    <span>${totalDiscounted.toFixed(2)} NOK</span>
     </p>
 
     <button type="button" class="checkout-btn">Checkout</button>
@@ -113,6 +117,61 @@ export function initCart() {
       document.querySelector("#app").innerHTML = Cart();
 
       initCart();
+  });
+ const plusButtons = document.querySelectorAll(".plus-btn");
+
+ const minusButtons = document.querySelectorAll(".minus-btn");
+
+  plusButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const index = button.dataset.index;
+
+      if (!cart[index].quantity) {
+        cart[index].quantity = 1;
+      }
+
+      cart[index].quantity++;
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      document.querySelector("#app").innerHTML = Cart();
+
+      initCart();
+
+    });
+
+  });
+
+  minusButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const index = button.dataset.index;
+
+      if (!cart[index].quantity) {
+        cart[index].quantity = 1;
+      }
+
+      if (cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      document.querySelector("#app").innerHTML = Cart();
+
+      initCart();
+
+    });
+
   });
 
 }
