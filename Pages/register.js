@@ -52,11 +52,13 @@ export default function Register() {
 }
 
 export function initRegister() {
+
   const form = document.querySelector("#register-form ");
 
   if (!form) return;
 
   form.addEventListener("submit", async (event) => {
+
     event.preventDefault();
 
     const name = document.querySelector("#name").value.trim();
@@ -69,13 +71,16 @@ export function initRegister() {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          
+
         },
+
         body: JSON.stringify({
           name,
           email,
           password,
+
         }),
+
       });
 
       const data = await response.json();
@@ -89,8 +94,12 @@ export function initRegister() {
 
       window.location.href = "/login";
     } catch (error) {
+      
       console.error(error);
       alert("something went wrong");
+
     }
+
   });
+
 }

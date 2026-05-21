@@ -108,6 +108,15 @@ export default function Cart() {
 
 export function initCart() {
 
+  const checkoutBtn = document.querySelector(".checkout-btn");
+
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", () => {
+    history.pushState({}, "", "/checkout");
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  });
+}
+
   const clearCartBtn = document.querySelector(".clear-cart-btn");
 
   clearCartBtn.addEventListener("click", () => {
