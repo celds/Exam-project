@@ -105,11 +105,13 @@ export async function initProducts() {
        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 
   addToCartButtons.forEach((button) => {
+    
     button.addEventListener("click",() => {
 
       const productId = button.dataset.id;
 
       const selectedProduct = products.find((product) => {
+
         return product.id === productId;
       });
 

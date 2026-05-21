@@ -23,7 +23,7 @@ export default function Cart() {
 
     <section class="cart-section">
 
-    <h1>Checkout</h1>
+    <h1>Cart</h1>
 
     ${
       cart.length === 0
@@ -159,7 +159,6 @@ export function initCart() {
       }
 
       if (cart[index].quantity > 1) {
-
         cart[index].quantity--;
 
       }

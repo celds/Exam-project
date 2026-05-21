@@ -65,9 +65,11 @@ export function initRegister() {
 
     try {
       const response = await fetch("https://v2.api.noroff.dev/auth/register", {
+
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          
         },
         body: JSON.stringify({
           name,
