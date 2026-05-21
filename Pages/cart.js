@@ -1,4 +1,20 @@
+
+
 export default function Cart() {
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const itemsCount = cart.length;
+
+  let totalPrice = 0;
+  let totalDiscounted = 0;
+
+  cart.forEach((product) => {
+    totalPrice += product.price;
+    totalDiscounted += product.discountedPrice;
+  });
+  const discount = totalPrice - totalDiscounted;
+
   return /*html*/ `
     <main id="cart-page">
 
@@ -8,33 +24,42 @@ export default function Cart() {
 
     <h1>Checkout</h1>
 
+    ${
+      cart.length === 0
+      ?`<p>Cart is empty</p>`
+      : cart.map((product) => {
+        return`
+
     <article class="cart-items">
 
-    <img src="" alt="no image"/>
+    <img src="${product.image.url}" alt="${product.title}"/>
 
     <section class="cart-item-info">
 
-    <h2>Gold Headphones</h2>
+    <h2>${product.title}</h2>
 
     <p class="old-price">
-    600 NOK
+    ${product.price} NOK
+        </p>
+
+    <p class="new-price"> 
+    ${product.discountedPrice} NOK
     </p>
 
-    <p class="new-price">
-    449.99 NOK
-    </p>
-
-    <p> Professional headphones with gold trim</p>
+    <p>${product.description}</p>
 
     <div class="quantity">
 
     <button type="button">-</button>
-    <span>2</span>
+    <span>1</span>
     <button type="button">+</button>
 
     </div>
     </section>
     </article>
+    `;
+      }).join("")
+    }
 
     <button type="button" class="clear-cart-btn">Clear cart</button>
     </section>
@@ -45,8 +70,8 @@ export default function Cart() {
     <section class="summary-info">
 
     <p>
-    <span>Items (3)</span>
-    <span>5000 NOK</span>
+    <span>Items (${itemsCount})</span>
+    <span>${totalPrice}</span>
     </p>
 
     <p>
@@ -56,7 +81,7 @@ export default function Cart() {
 
     <p>
     <span>Discounts:</span>
-    <span>-500 NOK</span>
+    <span>-${discount}</span>
     </p>
 
     </section>
@@ -66,7 +91,7 @@ export default function Cart() {
 
     <p>
     <span>Total</span>
-    <span>4500 NOK</span>
+    <span>${totalDiscounted}</span>
     </p>
 
     <button type="button" class="checkout-btn">Checkout</button>
@@ -85,7 +110,9 @@ export function initCart() {
 
     localStorage.removeItem("cart");
 
-    location.reload();
+      document.querySelector("#app").innerHTML = Cart();
+
+      initCart();
   });
 
 }
