@@ -16,12 +16,16 @@ export default function Products() {
 
   <div id="productsTrack" class="products-track">
   </div>
+
   </div>
+
   
   <button id="nextBtn" class="carousel-btn">
   &#10095;
   </button>
+
   </div>
+
   </section>
   `;
 }

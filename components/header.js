@@ -6,11 +6,15 @@ export default function Header() {
 
     <div class="logo-container">
     <a href="/" data-link>
-    <img src="assets/img/E-buyw.png" alt="white e-buy logo" class="white-logo"/>
+    <img src="./assets/img/E-buyw.png" alt="white e-buy logo" class="white-logo"/>
     </a> 
     </div>
 
-    <nav class="nav-container">
+    <button class="ham-btn" id="ham-btn">
+    <img src="./assets/img/hamw.png" alt= "hamburger menu" class="ham-icon">
+    </button>
+
+    <nav class="nav-container" id="nav-menu">
 
     <a href="/success" data-link>success</a>
     <a href="/products" data-link>Products</a>
@@ -56,6 +60,14 @@ export function initHeader() {
   const icon = document.getElementById("profile-icon");
   const card = document.getElementById("profile-card");
   const logoutBtn = document.getElementById("logout-btn");
+  const hamBtn = document.getElementById("ham-btn");
+  const navMenu = document.getElementById("nav-menu");
+
+  if (hamBtn && navMenu) {
+    hamBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+  }
 
   if (icon && card) {
     icon.addEventListener("click", () => {

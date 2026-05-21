@@ -71,6 +71,10 @@
   box-sizing: border-box;
 }
 
+.btn:hover {
+ box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
 /* Header */
 header {
   background-color: var(--primary-color);
@@ -84,6 +88,7 @@ header {
 
   width: 100%;
   box-sizing: border-box;
+  position: relative
 }
 
 .logo-container {
@@ -115,6 +120,43 @@ header {
   object-fit: contain;
   cursor: pointer;
   display: block;
+}
+
+.ham-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ham-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+
+  .ham-btn {
+    display: block;
+  }
+
+  .nav-container {
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    width: 100%;
+    background: var(--primary-color);
+    padding: 20px;
+  }
+
+  .nav-container.active {
+    display: flex;
+  }
 }
 
 /* Footer */

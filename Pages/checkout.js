@@ -1,11 +1,13 @@
 export default function Checkout() {
   return /*html*/ `
   <section class="checkout-page">
+
   <div class="checkout-container">
 
   <div class="checkout-left">
 
   <div class="checkout-card">
+
   <h1>Checkout information</h1>
 
   <form id="checkout-form">
@@ -22,8 +24,10 @@ export default function Checkout() {
   id="email"
   placeholder="Email"
   required/>
+
   </div>
 
+  
   <div class="form-section">
   <h3>Shipping address</h3>
 
@@ -32,9 +36,13 @@ export default function Checkout() {
   id="address"
   placeholder="Address"
   required/>
+
   </div>
+
   </form>
+
   </div>
+
 
   <div class="checkout-card">
   <payment method</h2>
@@ -62,26 +70,35 @@ export default function Checkout() {
   type="text"
   id="securityCode"
   placeholder="Security code"/>
+
   </div>
+
   </div>
+
 
   <label class="payment-option">
   <input type="radio" name="payment" value="klarna"/>
   <span>Pay with klarna</span>
+
   </label>
 
   <label class="payment-option">
   <input type="radio" name="payment" value="googleplay"/>
   <span>Pay with Google</span>
+
   </label>
 
   <button type "submit" class="pay-btn">Pay</button>
 
   </form>
-  </div>
+
   </div>
 
+  </div>
+
+
   <aside class="order-summary">
+
   <h2>Order summary</h2>
 
   <div id="order-items"</div>
@@ -97,8 +114,11 @@ export default function Checkout() {
   <span>Total</span>
   <span id="total-price">1 NOK</span>
   </div>
+
   </aside>
+
   </div>
+
   </section>
   `;
 }

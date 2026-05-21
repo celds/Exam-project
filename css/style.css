@@ -185,6 +185,10 @@
   border-radius: 20px;
 }
 
+.add-to-cart-btn:hover {
+   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
 .carousel-btn {
   width: 42px;
   height: 42px;
@@ -291,6 +295,7 @@ p.new-price {
   font-size: var(--small);
 }
 
+
 .clear-cart-btn {
   border: none;
   background: none;
@@ -299,6 +304,7 @@ p.new-price {
   float: right;
   font-size: var(--small);
 }
+
 
 
 .summary {
@@ -337,4 +343,8 @@ p.new-price {
   font-size: var(--paragraph);
   cursor: pointer;
   margin-top: 20px;
+}
+
+.checkout-btn:hover {
+   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }

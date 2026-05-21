@@ -1,5 +1,6 @@
 export default function Login() {
   return /*html*/ `
+  
    <main class="page-center">
     <section class="auth-container">
 
@@ -8,6 +9,8 @@ export default function Login() {
      <form class="auth-form" id="login-form">
 
      <div>
+
+
      <label for="email">Email</label>
 
      <input class="input-field"
@@ -16,6 +19,7 @@ export default function Login() {
      name="email"
      placeholder="Email"
         required/>
+
      </div>
 
      <div>
@@ -28,6 +32,7 @@ export default function Login() {
      placeholder="Password"
      required
      />
+
      </div>
 
      <p id="login-error"></p>
@@ -37,7 +42,9 @@ export default function Login() {
      <a href="#" class="forgot-password">Forgot password?</a>
 
      </form>
+
    </section>
+
    </main>
  `;
 }

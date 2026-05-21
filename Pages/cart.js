@@ -108,6 +108,7 @@ export default function Cart() {
 
 export function initCart() {
 
+  
   const checkoutBtn = document.querySelector(".checkout-btn");
 
 if (checkoutBtn) {
@@ -126,7 +127,9 @@ if (checkoutBtn) {
       document.querySelector("#app").innerHTML = Cart();
 
       initCart();
+
   });
+
  const plusButtons = document.querySelectorAll(".plus-btn");
 
  const minusButtons = document.querySelectorAll(".minus-btn");

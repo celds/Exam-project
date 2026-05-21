@@ -15,6 +15,7 @@ export default function Register() {
     name="name"
     placeholder="name"
     required/>
+
     </div>
 
     <div>
@@ -25,6 +26,7 @@ export default function Register() {
     name="email"
     placeholder="email"
     required/>
+
     </div>
 
     <div>
@@ -35,6 +37,7 @@ export default function Register() {
     name="password"
     placeholder="Password"
     required/>
+
     </div>
 
     <p> By creating an account you agree to terms and conditions and User privacy notice</p>
@@ -46,6 +49,7 @@ export default function Register() {
     </p>
     
     </section>
+    
     </main>
 
     `;
