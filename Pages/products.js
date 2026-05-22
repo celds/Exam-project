@@ -121,7 +121,20 @@ export async function initProducts() {
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      cart.push(selectedProduct);
+      const existingProduct = cart.find((product) => {
+        return product.id === productId;
+      });
+
+      if (existingProduct) {
+        existingProduct.quantity =
+        (existingProduct.quantity || 1) + 1;
+
+      } else {
+
+      cart.push({...selectedProduct, quantity: 1,
+
+      });
+    }
 
       localStorage.setItem("cart", JSON.stringify(cart));
 

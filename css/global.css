@@ -200,3 +200,16 @@ header {
   color: var(--secondary-text-color);
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+
+  .footer {
+    flex-direction: column;
+    gap: 32px;
+    padding: 20px;
+  }
+
+  .footer-logo img {
+    width: 140px;
+  }
+}

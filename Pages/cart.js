@@ -4,7 +4,9 @@ export default function Cart() {
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const itemsCount = cart.length;
+  const itemsCount = cart.reduce((total, product) => {
+    return total + (product.quantity || 1);
+  }, 0);
 
   let totalPrice = 0;
   let totalDiscounted = 0;
@@ -172,6 +174,9 @@ if (checkoutBtn) {
 
       if (cart[index].quantity > 1) {
         cart[index].quantity--;
+
+      } else {
+        cart.splice(index, 1);
 
       }
 

@@ -1,23 +1,23 @@
-import home from "../pages/home.js";
-import products, { initProducts } from "../Pages/products.js";
-import productDetail from "../pages/product-detail.js";
-import checkout from "../pages/checkout.js";
-import cart, { initCart } from "../pages/cart.js";
-import login, { initLogin } from "../pages/login.js";
-import register, { initRegister } from "../pages/register.js";
-import success from "../pages/success.js";
-import aboutUs from "../pages/about-us.js";
+import Home from "../pages/home.js";
+import Products, { initProducts } from "../Pages/products.js";
+import ProductDetail from "../pages/product-detail.js";
+import Checkout from "../pages/checkout.js";
+import Cart, { initCart } from "../pages/cart.js";
+import Login, { initLogin } from "../pages/login.js";
+import Register, { initRegister } from "../pages/register.js";
+import Success from "../pages/success.js";
+import AboutUs from "../pages/about-us.js";
 
 const routes = [
-  { path: "/", view: home },
-  { path: "/products", view: products, init:initProducts },
-  { path: "/productDetail", view: productDetail },
-  { path: "/checkout", view: checkout },
-  { path: "/cart", view: cart, init:initCart },
-  { path: "/login", view: login, init:initLogin },
-  { path: "/register", view: register, init:initRegister },
-  { path: "/success", view: success },
-  { path: "/about-us", view: aboutUs },
+  { path: "/", view: Home },
+  { path: "/products", view: Products, init:initProducts },
+  { path: "/productDetail", view: ProductDetail },
+  { path: "/checkout", view: Checkout },
+  { path: "/cart", view: Cart, init:initCart },
+  { path: "/login", view: Login, init:initLogin },
+  { path: "/register", view: Register, init:initRegister },
+  { path: "/success", view: Success },
+  { path: "/about-us", view: AboutUs },
 ];
 
 export default routes;

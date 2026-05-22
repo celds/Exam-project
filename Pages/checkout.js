@@ -1,5 +1,32 @@
 export default function Checkout() {
+
+  const cart = JSON.parse(localStorage.getItem("cart"))  || [];
+
+let total =0;
+
+const orderItemsHTML = cart.map((product) => {
+  const quantity = product.quantity  || 1;
+  const itemTotal = product.discountedPrice * quantity;
+
+  total += itemTotal;
+
+  return `
+  
+   <div class="summary-item">
+
+  <span>${quantity}x ${product.title}</span>
+  <span>${itemTotal.toFixed(0)} NOK</span>
+
+  </div>
+   `;
+
+}).join("");
+
   return /*html*/ `
+
+ 
+
+
   <section class="checkout-page">
 
   <div class="checkout-container">
@@ -45,13 +72,13 @@ export default function Checkout() {
 
 
   <div class="checkout-card">
-  <payment method</h2>
+  <h2>Payment method</h2>
 
   <form id="payment-form">
 
   <label class="payment-option">
-  <input type="Radio" name"payment" value="card" checked/>
-  <span> Pay with card</span>
+  <input type="Radio" name="payment" value="card" checked/>
+  <span>Pay with card</span>
   </label>
 
   <div class="card-fields">
@@ -88,7 +115,7 @@ export default function Checkout() {
 
   </label>
 
-  <button type "submit" class="pay-btn">Pay</button>
+  <button type="submit" class="pay-btn">Pay</button>
 
   </form>
 
@@ -101,7 +128,7 @@ export default function Checkout() {
 
   <h2>Order summary</h2>
 
-  <div id="order-items"</div>
+  <div id="order-items">${orderItemsHTML}</div>
 
   <div class="summary-row">
   <span>Shipping</span>
@@ -112,7 +139,7 @@ export default function Checkout() {
 
   <div class="summary-row total">
   <span>Total</span>
-  <span id="total-price">1 NOK</span>
+  <span>${total.toFixed(0)} NOK</span>
   </div>
 
   </aside>
