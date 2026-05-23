@@ -1,6 +1,89 @@
 @import url("./variables.css");
 @import url("./global.css");
 
+
+
+/*Home page*/
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  color: var(--secondary-text-color);
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+
+.pay-section {
+  background: var(--secondary-color) ;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 56px 20px;
+  flex-wrap: wrap;
+}
+
+
+.pay-card {
+  position: relative;
+  width: 420px;
+  background: var(--background-color);
+  padding: var(--padding-16px);
+}
+
+.pay-card img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+
+.cardg-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.cardg-text h2 {
+  color: var(--secondary-text-color);
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+
+
+
 /* About Us */
 .aboutus-container {
   max-width: 800px;
@@ -24,6 +107,7 @@
   letter-spacing: var(--letter-spacing);
   color: var(--text-color);
 }
+
 
 /* Login */
 
@@ -97,6 +181,8 @@
   display: none;
 }
 
+
+
 /* products page */
 
 .bestselling-section {
@@ -129,7 +215,7 @@
 }
 
 .products-track::-webkit-scrollbar {
-  display: none
+  display: none;
 }
 
 
