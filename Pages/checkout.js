@@ -1,16 +1,16 @@
 export default function Checkout() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const cart = JSON.parse(localStorage.getItem("cart"))  || [];
+  let total = 0;
 
-let total =0;
+  const orderItemsHTML = cart
+    .map((product) => {
+      const quantity = product.quantity || 1;
+      const itemTotal = product.discountedPrice * quantity;
 
-const orderItemsHTML = cart.map((product) => {
-  const quantity = product.quantity  || 1;
-  const itemTotal = product.discountedPrice * quantity;
+      total += itemTotal;
 
-  total += itemTotal;
-
-  return `
+      return `
   
    <div class="summary-item">
 
@@ -19,19 +19,19 @@ const orderItemsHTML = cart.map((product) => {
 
   </div>
    `;
-
-}).join("");
+    })
+    .join("");
 
   return /*html*/ `
 
  
   <section class="checkout-page">
   
-  <form id="checkout-form" class="checkout-container">
+   <form id="checkout-form" class="checkout-container">
 
-  <div class="checkout-left">
+    <div class="checkout-left">
 
-  <div class="checkout-card">
+     <div class="checkout-card">
 
   <h1>Checkout information</h1>
 
@@ -131,7 +131,7 @@ const orderItemsHTML = cart.map((product) => {
   </label>
 
   <p id="form-message"></p>
-  <button type="submit" class="btn pay-btn">Pay</button>
+  <button type="submit" class="btn pay-btn">Complete purchase</button>
 
   </div>
 
@@ -164,7 +164,6 @@ const orderItemsHTML = cart.map((product) => {
   `;
 }
 export function initCheckout() {
-
   const form = document.getElementById("checkout-form");
   const message = document.getElementById("form-message");
 
@@ -178,21 +177,19 @@ export function initCheckout() {
     const postal = document.getElementById("postal").value.trim();
 
     const paymentMethod = document.querySelector(
-      'input[name="payment"]:checked'
-
+      'input[name="payment"]:checked',
     );
 
     if (!name || !email || !address || !city || !postal || !paymentMethod) {
       message.textContent = "Please fill out all fields before paying.";
       message.style.color = "red";
       return;
-
     }
-    
+
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-   let total = cart.reduce((sum, product) => {
-     const quantity = product.quantity || 1;
+    let total = cart.reduce((sum, product) => {
+      const quantity = product.quantity || 1;
       return sum + product.discountedPrice * quantity;
     }, 0);
 
@@ -204,13 +201,11 @@ export function initCheckout() {
 
     localStorage.removeItem("cart");
 
-  setTimeout(() => {
-  history.pushState({}, "", "/success");
+    setTimeout(() => {
+      history.pushState({}, "", "/success");
 
-  const event = new Event("popstate");
-  window.dispatchEvent(event);
-}, 200);
-
-});
-
+      const event = new Event("popstate");
+      window.dispatchEvent(event);
+    }, 200);
+  });
 }

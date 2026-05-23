@@ -1,7 +1,4 @@
-
-
 export default function Cart() {
-
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const itemsCount = cart.reduce((total, product) => {
@@ -21,50 +18,54 @@ export default function Cart() {
   return /*html*/ `
     <main id="cart-page">
 
-    <section class="cart-container">
+     <section class="cart-container">
 
-    <section class="cart-section">
+      <section class="cart-section">
 
-    <h1>Cart</h1>
+       <h1>Cart</h1>
 
-    ${
-      cart.length === 0
-      ?`<p>Cart is empty</p>`
-      : cart.map((product, index) => {
+         ${
+         cart.length === 0
+           ? `<p>Cart is empty</p>`
+           : cart
+             .map((product, index) => {
+              return `
 
-        return`
 
-    <article class="cart-items">
+             <article class="cart-items">
 
-    <img src="${product.image.url}" alt="${product.title}"/>
+            <img src="${product.image.url}" alt="${product.title}"/>
 
-    <section class="cart-item-info">
+          <section class="cart-item-info">
 
-    <h2>${product.title}</h2>
+       <h2>${product.title}</h2>
 
-    <p class="old-price">
-    ${product.price} NOK
+      <p class="old-price">
+      ${product.price} NOK
         </p>
 
-    <p class="new-price"> 
-    ${product.discountedPrice} NOK
-    </p>
+       <p class="new-price"> 
+       ${product.discountedPrice} NOK
+       </p>
 
-    <p>${product.description}</p>
+       <p>${product.description}</p>
 
-    <div class="quantity">
+       <div class="quantity">
 
-    <button type="button" class="minus-btn" data-index="${index}">-</button>
+        <button type="button" class="minus-btn" data-index="${index}">-</button>
 
-    <span>${product.quantity || 1}</span>
+          <span>${product.quantity || 1}</span>
 
-    <button type="button" class="plus-btn" data-index="${index}">+</button>
+           <button type="button" class="plus-btn" data-index="${index}">+</button>
 
-    </div>
-    </section>
+        </div>
+
+      </section>
+      
     </article>
     `;
-      }).join("")
+            })
+            .join("")
     }
 
     <button type="button" class="clear-cart-btn">Clear cart</button>
@@ -109,37 +110,31 @@ export default function Cart() {
 }
 
 export function initCart() {
-
-  
   const checkoutBtn = document.querySelector(".checkout-btn");
 
-if (checkoutBtn) {
-  checkoutBtn.addEventListener("click", () => {
-    history.pushState({}, "", "/checkout");
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  });
-}
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      history.pushState({}, "", "/checkout");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+  }
 
   const clearCartBtn = document.querySelector(".clear-cart-btn");
 
   clearCartBtn.addEventListener("click", () => {
-
     localStorage.removeItem("cart");
 
-      document.querySelector("#app").innerHTML = Cart();
+    document.querySelector("#app").innerHTML = Cart();
 
-      initCart();
-
+    initCart();
   });
 
- const plusButtons = document.querySelectorAll(".plus-btn");
+  const plusButtons = document.querySelectorAll(".plus-btn");
 
- const minusButtons = document.querySelectorAll(".minus-btn");
+  const minusButtons = document.querySelectorAll(".minus-btn");
 
   plusButtons.forEach((button) => {
-
     button.addEventListener("click", () => {
-
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
       const index = button.dataset.index;
@@ -155,15 +150,11 @@ if (checkoutBtn) {
       document.querySelector("#app").innerHTML = Cart();
 
       initCart();
-
     });
-
   });
 
   minusButtons.forEach((button) => {
-
     button.addEventListener("click", () => {
-
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
       const index = button.dataset.index;
@@ -174,10 +165,8 @@ if (checkoutBtn) {
 
       if (cart[index].quantity > 1) {
         cart[index].quantity--;
-
       } else {
         cart.splice(index, 1);
-
       }
 
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -185,9 +174,6 @@ if (checkoutBtn) {
       document.querySelector("#app").innerHTML = Cart();
 
       initCart();
-
     });
-
   });
-
 }

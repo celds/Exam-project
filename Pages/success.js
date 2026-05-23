@@ -1,4 +1,3 @@
-
 export default function Success() {
   const amount = localStorage.getItem("orderTotal");
 

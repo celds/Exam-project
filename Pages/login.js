@@ -4,11 +4,11 @@ export default function Login() {
    <main class="page-center">
     <section class="auth-container">
 
-     <h1>Log in</h1>
+      <h1>Log in</h1>
 
-     <form class="auth-form" id="login-form">
+       <form class="auth-form" id="login-form">
 
-     <div>
+       <div>
 
 
      <label for="email">Email</label>

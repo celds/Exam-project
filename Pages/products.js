@@ -40,28 +40,21 @@ export default function Products() {
 }
 
 export async function initProducts() {
-
   const productsTrack = document.getElementById("productsTrack");
   const productsGrid = document.getElementById("productsGrid");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
 
   async function getProducts() {
-
     try {
-
-      const response = await fetch(
-        "https://v2.api.noroff.dev/online-shop"
-      );
+      const response = await fetch("https://v2.api.noroff.dev/online-shop");
 
       const data = await response.json();
 
       const products = data.data.slice(0, 12);
 
       displayProducts(products);
-
     } catch (error) {
-
       productsTrack.innerHTML = `
         <p>Failed to load products</p>
       `;
@@ -71,17 +64,15 @@ export async function initProducts() {
   }
 
   function displayProducts(products) {
-
     productsTrack.innerHTML = "";
-    productsGrid.innerHTML ="";
+    productsGrid.innerHTML = "";
 
     products.forEach((product) => {
-
       const productHTML = `
 
         <article class="product-card">
 
-          <a href="/product-detail?id=${product.id}">
+          <a href="/product-detail?id=${product.id}" data-link>
           <img
             src="${product.image.url}"
             alt="${product.title}"
@@ -112,68 +103,57 @@ export async function initProducts() {
         </article>
       `;
 
-      productsTrack.innerHTML += productHTML
+      productsTrack.innerHTML += productHTML;
       productsGrid.innerHTML += productHTML;
     });
 
-       const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 
-  addToCartButtons.forEach((button) => {
-    
-    button.addEventListener("click",() => {
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productId = button.dataset.id;
 
-      const productId = button.dataset.id;
+        const selectedProduct = products.find((product) => {
+          return product.id === productId;
+        });
 
-      const selectedProduct = products.find((product) => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        return product.id === productId;
+        const existingProduct = cart.find((product) => {
+          return product.id === productId;
+        });
+
+        if (existingProduct) {
+          existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+        } else {
+          cart.push({ ...selectedProduct, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        console.log("added to cart");
+        alert("added to cart");
       });
-
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      const existingProduct = cart.find((product) => {
-        return product.id === productId;
-      });
-
-      if (existingProduct) {
-        existingProduct.quantity =
-        (existingProduct.quantity || 1) + 1;
-
-      } else {
-
-      cart.push({...selectedProduct, quantity: 1,
-
-      });
-    }
-
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      console.log("added to cart");
-      alert("added to cart");
-
     });
-  });
   }
   nextBtn.addEventListener("click", () => {
     const maxScroll = productsTrack.scrollWidth - productsTrack.clientWidth;
 
-    if(productsTrack.scrollLeft>= maxScroll -10) {
+    if (productsTrack.scrollLeft >= maxScroll - 10) {
       productsTrack.scrollLeft = 0;
     } else {
-       productsTrack.scrollLeft += 300;
+      productsTrack.scrollLeft += 300;
     }
   });
 
   prevBtn.addEventListener("click", () => {
     const maxScroll = productsTrack.scrollWidth - productsTrack.clientWidth;
 
-       if (productsTrack.scrollLeft <= 0) {
-        productsTrack.scrollLeft = maxScroll;
-       } else {
-
-       productsTrack.scrollLeft -= 300;
-
-   }
-});
-getProducts();
+    if (productsTrack.scrollLeft <= 0) {
+      productsTrack.scrollLeft = maxScroll;
+    } else {
+      productsTrack.scrollLeft -= 300;
+    }
+  });
+  getProducts();
 }
