@@ -1,7 +1,7 @@
 import Home from "../pages/home.js";
 import Products, { initProducts } from "../Pages/products.js";
 import ProductDetail from "../pages/product-detail.js";
-import Checkout from "../pages/checkout.js";
+import Checkout, { initCheckout } from "../pages/checkout.js";
 import Cart, { initCart } from "../pages/cart.js";
 import Login, { initLogin } from "../pages/login.js";
 import Register, { initRegister } from "../pages/register.js";
@@ -12,7 +12,7 @@ const routes = [
   { path: "/", view: Home },
   { path: "/products", view: Products, init:initProducts },
   { path: "/productDetail", view: ProductDetail },
-  { path: "/checkout", view: Checkout },
+  { path: "/checkout", view: Checkout, init: initCheckout },
   { path: "/cart", view: Cart, init:initCart },
   { path: "/login", view: Login, init:initLogin },
   { path: "/register", view: Register, init:initRegister },

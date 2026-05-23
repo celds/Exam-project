@@ -26,6 +26,15 @@ export default function Products() {
 
   </div>
 
+  <section class="all-products">
+
+  <h2 class="all-products-title">
+  All products</h2>
+
+  <div id="productsGrid" class="products-grid"></div>
+
+  </section>
+
   </section>
   `;
 }
@@ -33,10 +42,9 @@ export default function Products() {
 export async function initProducts() {
 
   const productsTrack = document.getElementById("productsTrack");
+  const productsGrid = document.getElementById("productsGrid");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
-
-  let currentIndex = 0;
 
   async function getProducts() {
 
@@ -65,12 +73,11 @@ export async function initProducts() {
   function displayProducts(products) {
 
     productsTrack.innerHTML = "";
+    productsGrid.innerHTML ="";
 
     products.forEach((product) => {
 
-      /*rememebebebberrrrR*/
-      
-      productsTrack.innerHTML += `
+      const productHTML = `
 
         <article class="product-card">
 
@@ -104,6 +111,9 @@ export async function initProducts() {
 
         </article>
       `;
+
+      productsTrack.innerHTML += productHTML
+      productsGrid.innerHTML += productHTML;
     });
 
        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
@@ -143,16 +153,27 @@ export async function initProducts() {
 
     });
   });
-}
-
-/*RMEMEBERRR */
+  }
   nextBtn.addEventListener("click", () => {
-    productsTrack.scrollLeft += 900;
+    const maxScroll = productsTrack.scrollWidth - productsTrack.clientWidth;
+
+    if(productsTrack.scrollLeft>= maxScroll -10) {
+      productsTrack.scrollLeft = 0;
+    } else {
+       productsTrack.scrollLeft += 300;
+    }
   });
 
   prevBtn.addEventListener("click", () => {
-  productsTrack.scrollLeft -= 900;
-  });
+    const maxScroll = productsTrack.scrollWidth - productsTrack.clientWidth;
 
-  getProducts();
+       if (productsTrack.scrollLeft <= 0) {
+        productsTrack.scrollLeft = maxScroll;
+       } else {
+
+       productsTrack.scrollLeft -= 300;
+
+   }
+});
+getProducts();
 }

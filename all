@@ -255,7 +255,7 @@
       ]
     },
     {
-      "id": "83111322-05a9-4a93-bc81-7d6b58f1a707",       /*13 WATCH 1*/
+      "id": "83111322-05a9-4a93-bc81-7d6b58f1a707",       /*13 WATCHes 1*/
       "title": "Black watch",
       "description": "A classic black leather watch, perfect for any occasion.",
       "price": 399.99,
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "id": "9be4812e-16b2-44e6-bc55-b3aef9db2b82",      /* 16 PERFUME 2*/
+      "id": "9be4812e-16b2-44e6-bc55-b3aef9db2b82",      /* 16 beauty 2*/
       "title": "Pink Candy Perfume",
       "description": "Playful perfume based on the scent of hibiscus with nuances of vanilla.",
       "price": 1399.99,
@@ -392,7 +392,7 @@
       ]
     },
     {
-      "id": "c0d245f1-58fa-4b15-aa0c-a704772a122b",      /* 18 HAIR 2*/
+      "id": "c0d245f1-58fa-4b15-aa0c-a704772a122b",      /* beauty  */
       "title": "Organic shampoo",
       "description": "An organic shampoo with bamboo fibres.",
       "price": 104.29,

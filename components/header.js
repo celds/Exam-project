@@ -17,6 +17,7 @@ export default function Header() {
     <nav class="nav-container" id="nav-menu">
 
     <a href="/success" data-link>success</a>
+    <a href="/product-detail" data-link>product detail</a>
     <a href="/products" data-link>Products</a>
     <a href="/about-us" data-link>About us</a>
 

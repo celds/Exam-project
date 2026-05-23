@@ -15,7 +15,7 @@ const orderItemsHTML = cart.map((product) => {
    <div class="summary-item">
 
   <span>${quantity}x ${product.title}</span>
-  <span>${itemTotal.toFixed(0)} NOK</span>
+  <span>${itemTotal.toFixed(2)} NOK</span>
 
   </div>
    `;
@@ -25,11 +25,9 @@ const orderItemsHTML = cart.map((product) => {
   return /*html*/ `
 
  
-
-
   <section class="checkout-page">
-
-  <div class="checkout-container">
+  
+  <form id="checkout-form" class="checkout-container">
 
   <div class="checkout-left">
 
@@ -37,18 +35,20 @@ const orderItemsHTML = cart.map((product) => {
 
   <h1>Checkout information</h1>
 
-  <form id="checkout-form">
-
   <div class="form-section">
   <h3>Contact information</h3>
 
-  <input type="text"
+  <input 
+  type="text"
   id="name"
+  class="input-field"
   placeholder="Name"
   required/>
 
-    <input type="email"
+  <input 
+  type="email"
   id="email"
+  class="input-field"
   placeholder="Email"
   required/>
 
@@ -61,12 +61,25 @@ const orderItemsHTML = cart.map((product) => {
   <input
   type="text"
   id="address"
+  class="input-field"
   placeholder="Address"
   required/>
 
-  </div>
+  <input
+  type="text"
+  id="city"
+  class="input-field"
+  placeholder="City/Region"
+  required/>
 
-  </form>
+  <input
+  type="text"
+  id="postal"
+  class="input-field"
+  placeholder="Postal code"
+  required/>
+
+  </div>
 
   </div>
 
@@ -74,28 +87,30 @@ const orderItemsHTML = cart.map((product) => {
   <div class="checkout-card">
   <h2>Payment method</h2>
 
-  <form id="payment-form">
-
   <label class="payment-option">
-  <input type="Radio" name="payment" value="card" checked/>
+  <input type="Radio" name="payment" value="card"/>
   <span>Pay with card</span>
   </label>
 
   <div class="card-fields">
+
   <input
   type="text"
   id="cardNumber"
+  class="input-field"
   placeholder="Card number"/>
 
   <div class="card-row">
   <input
   type="text"
   id="expiration"
+  class="input-field"
   placeholder="Expiration date"/>
 
   <input
   type="text"
   id="securityCode"
+  class="input-field"
   placeholder="Security code"/>
 
   </div>
@@ -110,14 +125,13 @@ const orderItemsHTML = cart.map((product) => {
   </label>
 
   <label class="payment-option">
-  <input type="radio" name="payment" value="googleplay"/>
-  <span>Pay with Google</span>
+  <input type="radio" name="payment" value="googlepay"/>
+  <span>Pay with Google Pay</span>
 
   </label>
 
-  <button type="submit" class="pay-btn">Pay</button>
-
-  </form>
+  <p id="form-message"></p>
+  <button type="submit" class="btn pay-btn">Pay</button>
 
   </div>
 
@@ -139,13 +153,64 @@ const orderItemsHTML = cart.map((product) => {
 
   <div class="summary-row total">
   <span>Total</span>
-  <span>${total.toFixed(0)} NOK</span>
+  <span>${total.toFixed(2)} NOK</span>
   </div>
 
   </aside>
 
-  </div>
+  </form>
 
   </section>
   `;
+}
+export function initCheckout() {
+
+  const form = document.getElementById("checkout-form");
+  const message = document.getElementById("form-message");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const postal = document.getElementById("postal").value.trim();
+
+    const paymentMethod = document.querySelector(
+      'input[name="payment"]:checked'
+
+    );
+
+    if (!name || !email || !address || !city || !postal || !paymentMethod) {
+      message.textContent = "Please fill out all fields before paying.";
+      message.style.color = "red";
+      return;
+
+    }
+    
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+   let total = cart.reduce((sum, product) => {
+     const quantity = product.quantity || 1;
+      return sum + product.discountedPrice * quantity;
+    }, 0);
+
+    localStorage.setItem("orderTotal", total.toFixed(2));
+    localStorage.setItem("lastOrder", JSON.stringify(cart));
+
+    message.textContent = "Payment successful!";
+    message.style.color = "green";
+
+    localStorage.removeItem("cart");
+
+  setTimeout(() => {
+  history.pushState({}, "", "/success");
+
+  const event = new Event("popstate");
+  window.dispatchEvent(event);
+}, 200);
+
+});
+
 }
