@@ -8,7 +8,7 @@ Also used Ai to find me some words to put on the two pay cards on homepage.
 Used Ai study mode to help me understand why certain code broke which more often than not was because of a simple mistype.
 
 
-
+test
 
 Every image or icon I've used in this project has been free use with attributes.
 
