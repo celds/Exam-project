@@ -11,31 +11,39 @@ const NotFound = () => `
 
 export function initRouter() {
   function renderPage() {
+     const app = document.getElementById("app");
+    const headerEl = document.getElementById("header");
+    const footerEl = document.getElementById("footer");
+
+    if (!app) return;
 
     const path = window.location.hash  ||  "#/";
-
     const currentPath = path.split("?")[0];
 
-    const route = routes.find(
-      (route) => route.path === currentPath
-    );
+      const route = routes.find(r => r.path === currentPath);
     
     const page = route ? route.view : NotFound;
     
-    document.getElementById("app").innerHTML = `
-    <div class="loader"></div>
+    
+   "app".innerHTML = ` <div class="loader"></div>
     `;
+
     setTimeout(() => {
+            app.innerHTML = typeof page === "function" ? page() : page;
 
-    document.getElementById("app").innerHTML = page();
-    document.getElementById("header").innerHTML = renderHeader(); 
-    initHeader();
-    document.getElementById("footer").innerHTML = renderFooter();
+             if (headerEl) {
+        headerEl.innerHTML = renderHeader();
+        initHeader();
+      }
 
-    if (route && route.init) {
-      route.init();
+      if (footerEl) {
+        footerEl.innerHTML = renderFooter();
+      }
+
+      if (route?.init) {
+        route.init();
     }
-  }, 300);
+  }, 200);
 }
 
   renderPage();
@@ -44,12 +52,12 @@ export function initRouter() {
 
     const link = event.target.closest("[data-link]");
 
-    if (link) {
+    if (!link) { return;
       
       event.preventDefault();
 
       window.location.hash = link.hash;
-    }
   });
+  
   window.addEventListener("hashchange", renderPage);
 }
