@@ -1,6 +1,6 @@
 export default function Footer() {
   return `
-    <footer class="footer">
+    <div class="footer">
     <div class="footer-logo">
     <a href="#/"><img src="assets/img/E-buyw.png" alt="white e-buy logo"></a>
     </div>
@@ -14,10 +14,11 @@ export default function Footer() {
 
     <nav class="footer-nav">  
     <h2>Navigation</h2>
-    <a href="#/products">Products<a>
-    <a href="#/register">Register<a>
-    <a href="#/login">Log in<a>
+    <a href="#/products">Products</a>
+    <a href="#/register">Register</a>
+    <a href="#/login">Log in</a>
     </nav>
+    </div>
 
     </footer>
 
