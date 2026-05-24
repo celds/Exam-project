@@ -2,7 +2,6 @@ export default function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return `
-    <header id="header">
 
     <div class="logo-container">
     <a href="#/" data-link>
@@ -52,7 +51,6 @@ export default function Header() {
     }
 
     </nav>
-    </header>
     `;
 }
 
