@@ -45,7 +45,7 @@ export default function Register() {
     <button class="btn" type="submit"> Create account</button>
 
     </form>
-    <p> Already have an account? <a href="/login" data-link>Login</a>
+    <p> Already have an account? <a href="#/login" data-link>Login</a>
     </p>
     
     </section>
@@ -56,7 +56,7 @@ export default function Register() {
 }
 
 export function initRegister() {
-  const form = document.querySelector("#register-form ");
+  const form = document.querySelector("#register-form");
 
   if (!form) return;
 
@@ -90,7 +90,7 @@ export function initRegister() {
 
       console.log("user was created:", data);
 
-      window.location.href = "/login";
+      window.location.hash = "#/login";
     } catch (error) {
       console.error(error);
       alert("something went wrong");

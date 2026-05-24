@@ -114,8 +114,7 @@ export function initCart() {
 
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
-      history.pushState({}, "", "/checkout");
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      window.location.hash = "#/checkout";
     });
   }
 

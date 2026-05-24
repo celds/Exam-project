@@ -19,7 +19,7 @@ export default function Success() {
 
     </section>
 
-    <a href="/products" data-link class="btn">Done</a>
+    <a href="#/products" data-link class="btn">Done</a>
 
     </section>
     </main>

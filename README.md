@@ -3,10 +3,9 @@
 AI usage:
 
 for this project I used AI in a couple of things, such as placeholder text in the About me page.
-This is what I asked of it: "can you write me an About Us page for an e-commerce application called "e-buy", make it around 130 words and 2 paragraphs."
-
 Also used Ai to find me some words to put on the two pay cards on homepage.
 
+Used Ai study mode to help me understand why certain code broke which more often than not was because of a simple mistype.
 
 
 
@@ -24,7 +23,3 @@ Every image or icon I've used in this project has been free use with attributes.
 
 
 
-
-
-vent.
-passord card 

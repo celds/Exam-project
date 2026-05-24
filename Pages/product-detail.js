@@ -12,7 +12,11 @@ export default function ProductDetail() {
 export async function initProductDetail() {
   const productContainer = document.getElementById("productDetailContainer");
 
-  const params = new URLSearchParams(window.location.search);
+  const hash = window.location.hash;
+
+  const queryString = hash.split("?")[1];
+
+  const params = new URLSearchParams(queryString);
 
   const productId = params.get("id");
 
@@ -72,6 +76,8 @@ export async function initProductDetail() {
        : `<p class="detail-no-reviews">
        No reviews yet
      </p>`;
+     
+     const hasDiscount = product.discountedPrice < product.price;
 
     productContainer.innerHTML = `
 
@@ -99,6 +105,9 @@ export async function initProductDetail() {
 
   <div class="detail-product-price-box">
 
+  ${
+    hasDiscount
+    ?`
   <span class="detail-product-sale-price">
   ${product.discountedPrice.toFixed(2)} NOK
   </span>
@@ -106,6 +115,15 @@ export async function initProductDetail() {
   <span class="detail-product-old-price">
   ${product.price.toFixed(2)} NOK
   </span>
+  
+  `
+  : `
+
+  <span class="detail-product-sale-price">
+  ${product.price.toFixed(2)} NOK
+  </span>
+  `
+  }
 
   </div>
 
@@ -169,6 +187,7 @@ export async function initProductDetail() {
         cart.push({
           id: product.id,
           title: product.title,
+          description: product.description,
           price: product.price,
           discountedPrice: product.discountedPrice,
           image: product.image,
@@ -179,6 +198,23 @@ export async function initProductDetail() {
       localStorage.setItem("cart", JSON.stringify(cart));
 
       alert("Added to cart");
-    });
-  }
-}
+
+        });
+
+        const shareButton = document.querySelector(".detail-share-button");
+  
+        shareButton.addEventListener("click", async () => {
+          const shareUrl = window.location.href;
+          
+          try {
+             await navigator.share({
+              title: product.title,
+              url: shareUrl,
+            });
+          } catch (error) {
+            navigator.clipboard.writeText(shareUrl);
+            alert("Link copied!");
+          }
+        });
+      }
+ }

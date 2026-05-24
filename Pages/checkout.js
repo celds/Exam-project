@@ -193,8 +193,8 @@ export function initCheckout() {
       return sum + product.discountedPrice * quantity;
     }, 0);
 
-    localStorage.setItem("orderTotal", total.toFixed(2));
-    localStorage.setItem("lastOrder", JSON.stringify(cart));
+     localStorage.setItem("orderTotal", total.toFixed(2));
+     localStorage.setItem("lastOrder", JSON.stringify(cart));
 
     message.textContent = "Payment successful!";
     message.style.color = "green";
@@ -202,10 +202,7 @@ export function initCheckout() {
     localStorage.removeItem("cart");
 
     setTimeout(() => {
-      history.pushState({}, "", "/success");
-
-      const event = new Event("popstate");
-      window.dispatchEvent(event);
+     window.location.hash = "#/success";
     }, 200);
   });
 }

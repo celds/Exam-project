@@ -5,7 +5,7 @@ export default function Header() {
     <header id="header">
 
     <div class="logo-container">
-    <a href="/" data-link>
+    <a href="#/" data-link>
     <img src="./assets/img/E-buyw.png" alt="white e-buy logo" class="white-logo"/>
     </a> 
     </div>
@@ -16,22 +16,21 @@ export default function Header() {
 
     <nav class="nav-container" id="nav-menu">
 
-    <a href="/success" data-link>success</a>
-    <a href="/product-detail" data-link>product detail</a>
-    <a href="/products" data-link>Products</a>
-    <a href="/about-us" data-link>About us</a>
+    <a href="#/" data-link>Home</a>
+    <a href="#/products" data-link>Products</a>
+    <a href="#/about-us" data-link>About us</a>
 
     ${
       !user
         ? `
 
-        <a href="/register" data-link>Register</a>
-        <a href="/login" data-link>Log in</a>
+        <a href="#/register" data-link>Register</a>
+        <a href="#/login" data-link>Log in</a>
 
          `
         : `
         
-        <a href="/cart" data-link>
+        <a href="#/cart" data-link>
         <img src="./assets/img/cartw.png" alt="cart icon" class="nav-icon"/>
         </a>
 
@@ -79,7 +78,7 @@ export function initHeader() {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
       localStorage.clear();
-      window.location.href = "/";
+      window.location.hash = "#/";
     });
   }
 }

@@ -92,7 +92,7 @@ export function initLogin() {
         }),
       );
 
-      window.location.pathname = "/";
+      window.location.hash = "#/";
     } catch (error) {
       errorMessage.textContent = error.message;
     }

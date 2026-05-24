@@ -68,11 +68,15 @@ export async function initProducts() {
     productsGrid.innerHTML = "";
 
     products.forEach((product) => {
+
+      const hasDiscount =
+       product.discountedPrice < product.price;
+
       const productHTML = `
 
         <article class="product-card">
 
-          <a href="/product-detail?id=${product.id}" data-link>
+          <a href="#/product-detail?id=${product.id}" data-link>
           <img
             src="${product.image.url}"
             alt="${product.title}"
@@ -86,6 +90,10 @@ export async function initProducts() {
 
           <div class="product-prices">
 
+          ${
+            hasDiscount
+            ?`
+
             <span class="discount-price">
               ${product.discountedPrice.toFixed(2)} NOK
             </span>
@@ -93,7 +101,13 @@ export async function initProducts() {
             <span class="original-price">
               ${product.price.toFixed(2)} NOK
             </span>
-
+            `
+            : `
+            <span class="discount-price">
+              ${product.price.toFixed(2)} NOK
+            </span>
+            `
+          }
           </div>
 
           <button class="add-to-cart-btn" data-id="${product.id}">
@@ -126,12 +140,12 @@ export async function initProducts() {
         if (existingProduct) {
           existingProduct.quantity = (existingProduct.quantity || 1) + 1;
         } else {
+
           cart.push({ ...selectedProduct, quantity: 1 });
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-
-        console.log("added to cart");
+        
         alert("added to cart");
       });
     });
