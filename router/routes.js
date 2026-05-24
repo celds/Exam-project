@@ -1,12 +1,12 @@
-import Home from "../pages/home.js";    /* this previous repository helped with routes.js https://github.com/NoroffFEU/edugate-team-div/blob/develop/router/routes.js */
-import Products, { initProducts } from "../pages/products.js";
-import ProductDetail, { initProductDetail } from "../pages/product-detail.js";
-import Checkout, { initCheckout } from "../pages/checkout.js";
-import Cart, { initCart } from "../pages/cart.js";
-import Login, { initLogin } from "../pages/login.js";
-import Register, { initRegister } from "../pages/register.js";
-import Success from "../pages/success.js";
-import AboutUs from "../pages/about-us.js";
+import Home from "../Pages/home.js";    /* this previous repository helped with routes.js https://github.com/NoroffFEU/edugate-team-div/blob/develop/router/routes.js */
+import Products, { initProducts } from "../Pages/products.js";
+import ProductDetail, { initProductDetail } from "../Pages/product-detail.js";
+import Checkout, { initCheckout } from "../Pages/checkout.js";
+import Cart, { initCart } from "../Pages/cart.js";
+import Login, { initLogin } from "../Pages/login.js";
+import Register, { initRegister } from "../Pages/register.js";
+import Success from "../Pages/success.js";
+import AboutUs from "../Pages/about-us.js";
 
 const routes = [
   { path: "#/", view: Home },
