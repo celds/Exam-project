@@ -25,7 +25,7 @@ export function initRouter() {
     const page = route ? route.view : NotFound;
     
     
-   "app".innerHTML = ` <div class="loader"></div>
+   app.innerHTML = ` <div class="loader"></div>
     `;
 
     setTimeout(() => {
@@ -52,12 +52,12 @@ export function initRouter() {
 
     const link = event.target.closest("[data-link]");
 
-    if (!link) { return;
+    if (!link) return;
       
       event.preventDefault();
 
       window.location.hash = link.hash;
   });
-  
+
   window.addEventListener("hashchange", renderPage);
 }
